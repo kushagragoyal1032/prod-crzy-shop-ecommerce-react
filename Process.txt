@@ -1,0 +1,203 @@
+npm init -y (create package.json file)
+package.json - change main from index.js to server.js
+             - added start script ("start": "node server.js")
+
+
+https://www.npmjs.com/ (can install packages from here)
+- All depedency stroed in node_modules and can check in package-lock.json file
+npm i express
+npm i colors (to make terminal colorful)
+
+create server.js in root directory
+make update in package.json script
+to run "node server.js" or "npm start"
+npm i nodemon (automatically restarting the node application when file changes)
+now to run - "npm run server"
+
+to remove syntex - const express = require('express');
+add "type":"module" in composer.json
+update to - import express from "express";
+
+npm i dotenv
+import in server.js
+create .env file to store environment variables 
+
+npm i morgan
+it tell api resuest which url hit
+
+create database in mongodb
+click connect and copy and string  and put in .env and mongodb compass
+
+Connect mongodb - 
+npm install mongoose
+create config folder - create db.js
+import db.js and connect into server.js
+
+create folder - 
+    models
+    routes
+for MVC create folder - 
+    controllers
+    helpers
+    middlewares
+
+in models create userModel.js than for that create authRoute.js
+create authController.js for authRoute.js
+
+now for hasing password - 
+npm install bcrypt
+add authHelper.js 
+
+for more security we use jsonwebtoken
+npm install jsonwebtoken
+import in authController.js and add secret key in .env
+
+and use JWT in loginController endpint
+now create middleware for compare token
+
+create test route -> add middleware
+copy token which receieve when login => add in header of postman
+
+====== After AdminDashboard and user dashboard
+
+Now we create schema for Category - categoryModel.js
+intsall slugify package :  this for seo enhancement ex - /category data -> /category-data 
+-> npm i slugify
+then create categoryRoute.js in routes folder
+create categoryController.js in controller
+create schema for Category - categoryModel.js
+
+then create productRoute.js in routes folder
+to store photo filed use pakage:
+-> npm install express-formidable
+create productController.js in controller
+
+- now go to frontend to show the category and product
+
+
+
+----------------------------------------------------------------
+backend Structure - 
+
+server.js
+    db.js
+    authRoute.js
+        authController.js
+            authHelper.js
+            models.js
+        authMiddleware.js
+            models.js
+
+----------------------
+frontend Structure - 
+
+src
+    components
+        Layout
+            AdminMenu.js
+            UserMenu.js
+            Header.js
+            Footer.js
+            Layout.js
+        Routes
+            Private.js
+            AdminPrivate.js
+        Form
+            CategoryForm.js
+        Spinner.js
+    context
+        auth.js
+    pages
+        Admin
+            AdminDashboard.js
+            Users.js
+            CreateProduct.js
+            CreateCategory.js
+        Auth
+        user
+            Dashboard.js
+            Profile.js
+            Orders.js
+        About.js
+        Content.js
+        HomePage.js
+        PageNotFound.js
+        Policy.js
+    styles
+        AuthStyles.css
+    App.js
+    index.js
+    index.css
+
+----------------------------------------------------------------
+
+React application -
+
+create react: 
+npx create-react-app client
+start react:
+-> npm start
+create some components
+for create router:
+-> npm i react-router-dom
+and import in index.js
+
+for SEO:
+-> npm install --save react-helmet
+
+create register form in register.js
+now to send use data to server we use "axios" (for update post get in backend) (if we use http client in react then axios is the best package)
+-> npm install axios
+for toastify we use this package:
+-> npm install react-hot-toast (import in layout.js)
+
+create .env for front-end security
+
+now to run backend and front-end with same cmd we use:
+-> npm i concurrently cors (cros to prevent from cros-site) (we we install it in backend)
+import cors in server.js and add in middleware below
+
+create styles folder for css
+create AuthStyles.css
+
+Now to use contaxt API 
+in src create contaxt folder -- create auth.js file
+
+for private route to protect 
+create dashboard.js in pages->user folder
+create private.js in src->components->Routes folder
+can we put routes inside protected routes (see in app.js)
+
+for admin create dashboard
+src->pages->Admin->AdminDashboard.js
+create AdminPrivate.js in src->components->Routes folder 
+
+create AdminMenu.js as resuable componet in src->components->layout
+create [CreateCategory.js,CreateProduct.js,Users.js] in src->pages->Admin
+
+-- now got to backend and create routs and controller for category and product
+
+now add logic to show category in CreateCategory.js
+create [CategoryForm.js] in src->components->Form to create resuable component
+
+for edit functionally we use antdesign to create model
+* first install antdesign package
+-> npm install antd
+and import css file
+import 'antd/dist/reset.css'
+
+now work on CreateProduct.js file and work on products
+
+----------------------------------------------------------------
+
+To run backend (from project root)-
+-> npm run server
+
+To run frontend (from client's root)- 
+-> npm start
+
+To run frontend (from project root)- 
+-> npm run client
+
+To run both (from project root)-
+-> npm run dev
